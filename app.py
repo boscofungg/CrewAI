@@ -49,7 +49,6 @@ from langchain_community.document_loaders import PyPDFLoader
 
 loader = PyPDFLoader("Random_Notes.pdf")
 pages = loader.load_and_split()
-pages
 
 from langchain_community.vectorstores import DocArrayInMemorySearch
 
@@ -58,7 +57,7 @@ retriever = vectorstore.as_retriever()
 
 # The following line can be used to test the retriever
 # You can print out the term for testing
-retriever.invoke("cash flow")
+retriever.invoke("Potassium")
 
 from operator import itemgetter
 
@@ -100,10 +99,9 @@ chain = (
 import streamlit as st
 text_input = st.text_input(
         "Enter your questions 👇",
-        placeholder=st.session_state.placeholder,
     )
+
 questions = f'{text_input}'
-for question in questions:
-    st.write(f"Question: {question}")
-    st.write(f"Answer: {chain.invoke({'question': question})}")
-    st.write()
+answers = chain.invoke({'question': questions})
+if st.button("Ask"):
+    st.write(answers)
