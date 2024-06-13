@@ -5,7 +5,7 @@ Please first ensure you have installed local llm llama3, otherwise, change the c
 then download this whole zip from github
 
 # Step 1
-python3 -m venv .venv
+python3 -m venv .venv \n
 source .venv/bin/activate
 pip install -r requirements
 
